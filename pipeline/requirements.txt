@@ -1,0 +1,21 @@
+# ILV pipeline dependencies (protocol v1.1)
+# Minimal core runs on: Python 3.10+  (l_csi, l_rhyme, l_meter, l_emo)
+# Full scoring needs the optional backends below.
+
+# --- core ---
+numpy>=1.24
+
+# --- Chinese NLP ---
+pypinyin>=0.50          # zh finals for l_rhyme; without it zh rhyme degrades
+
+# --- English NLP ---
+pronouncing>=0.2        # CMU dict for en rhyme; without it suffix heuristic
+cmudict>=1.0            # pronouncing's data source
+
+# --- semantic backend (choose at least one) ---
+bert-score>=0.3.13      # multilingual BERTScore -> l_sem  (recommended)
+# sentence-transformers>=2.2  # LaBSE fallback -> l_sem
+# torch>=2.0              # required by both backends above
+
+# --- stats side (R, see analysis/stats.R) ---
+# R>=4.4: lme4 effectsize emmeans boot psych umap
